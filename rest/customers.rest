@@ -1,0 +1,54 @@
+@uri=http://127.0.0.1:3005/api
+
+###
+
+GET {{uri}}/customers
+###
+# query params
+GET {{uri}}/customers?sort=CustomerId
+
+###
+# req.params
+GET {{uri}}/customers/59
+###
+
+DELETE {{uri}}/customers/60
+
+###
+
+POST {{uri}}/customers
+Content-Type: application/json
+
+{
+  "FirstName": "odllll",
+  "LastName": "Mart",
+  "Company": "Woodstock Discos",
+  "Address": "Rua Dr. Falcão Filho, 155",
+  "City": "São Paulo",
+  "State": "SP",
+  "Country": "Brazil",
+  "PostalCode": "01007-010",
+  "Phone": "+55 (11) 3033-5446",
+  "Fax": "+55 (11) 3033-4564",
+  "Email": "eduardo@woodstock.com.br",
+  "SupportRepId": 4
+}
+###
+# updates
+PUT {{uri}}/customers/60
+Content-Type: application/json
+
+{
+  "FirstName": "odee",
+  "LastName": "Mart",
+  "Company": "Woodstock Discos",
+  "Address": "Rua Dr. Falcão Filho, 155",
+  "City": "São Paulo",
+  "State": "SP",
+  "Country": "Brazil",
+  "PostalCode": "01007-010",
+  "Phone": "+55 (11) 3033-5446",
+  "Fax": "+55 (11) 3033-4564",
+  "Email": "eduardo@woodstock.com.br",
+  "SupportRepId": 4
+}

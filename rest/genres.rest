@@ -1,0 +1,35 @@
+@uri=http://127.0.0.1:3005/api
+
+###
+GET {{uri}}/genres
+
+###
+# query params
+GET {{uri}}/genres?sort=GenreId
+
+###
+# req.params -- returns specific id (259)
+GET {{uri}}/genres/20
+
+###
+# Deletes row specified by :id 
+DELETE {{uri}}/genres/278
+
+###
+# Inserts row
+POST {{uri}}/genres
+Content-Type: application/json
+
+{
+  "Name": "od-music"
+}
+
+###
+# Updates row w/ router.put by :Id (349)
+# Note: Only updates what is already in the database, not new POSTS 
+PUT {{uri}}/genres/25
+Content-Type: application/json
+
+{
+  "Name": "Bon-Jovi"
+}

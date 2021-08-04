@@ -1,0 +1,34 @@
+@uri=http://127.0.0.1:3005/api
+
+###
+
+GET {{uri}}/albums
+###
+# query params
+GET {{uri}}/albums?sort=ArtistId
+
+###
+# req.params -- returns specific id (259)
+GET {{uri}}/albums/256
+###
+# Deletes row specified by :id
+DELETE {{uri}}/albums/350
+
+###
+# Inserts row
+POST {{uri}}/albums
+Content-Type: application/json
+
+{
+  "Title": "BonJovi",
+  "ArtistId" : "277"
+}
+###
+# Updates row w/ router.put by AlbumId (349)
+PUT {{uri}}/albums/347
+Content-Type: application/json
+
+{
+  "Title": "Bon-Jovi",
+   "ArtistId": "275"
+}

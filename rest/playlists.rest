@@ -1,0 +1,33 @@
+@uri=http://127.0.0.1:3005/api
+
+###
+
+GET {{uri}}/playlists
+###
+# query params
+GET {{uri}}/playlists?sort=PlaylistId
+
+###
+# req.params -- returns specific id (259)
+GET {{uri}}/playlists/20
+###
+# Deletes row specified by :id 
+DELETE {{uri}}/playlists/278
+
+###
+# Inserts row
+POST {{uri}}/playlists
+Content-Type: application/json
+
+{
+  "Name": "Bon Jovi"
+}
+###
+# Updates row w/ router.put by :Id (349)
+# Needs PlaylistId to update ----
+PUT {{uri}}/playlists/21
+Content-Type: application/json
+
+{
+  "Name": "Bon-Jovi"
+}

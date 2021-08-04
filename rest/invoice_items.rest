@@ -1,0 +1,39 @@
+@uri=http://127.0.0.1:3005/api
+
+###
+
+GET {{uri}}/invoice_items
+###
+# query params
+GET {{uri}}/invoice_items?sort=InvoiceLineId
+
+###
+# req.params -- returns specific id (259)
+GET {{uri}}/invoice_items/256
+###
+# Deletes row specified by :id
+DELETE {{uri}}/invoice_items/350
+
+###
+# Inserts row
+# Not Working --- ; TrackId was too high.
+POST {{uri}}/invoice_items
+Content-Type: application/json
+
+{
+   "InvoiceId": 412,
+    "TrackId": 3177,
+    "UnitPrice": 29.99,
+    "Quantity": 4
+  }
+###
+# Updates row w/ router.put by :Id (349)
+PUT {{uri}}/invoice_items/2240
+Content-Type: application/json
+
+{
+    "InvoiceId": 412,
+    "TrackId": 5577,
+    "UnitPrice": 29.99,
+    "Quantity": 4
+  }

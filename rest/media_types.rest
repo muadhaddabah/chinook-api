@@ -1,0 +1,34 @@
+@uri=http://127.0.0.1:3005/api
+
+###
+
+GET {{uri}}/media_types
+###
+# query params
+GET {{uri}}/media_types?sort=MediaTypeId
+
+###
+# req.params -- returns specific id (259)
+GET {{uri}}/media_types/20
+###
+# Deletes row specified by :id 
+DELETE {{uri}}/media_types/278
+
+###
+# Inserts row
+POST {{uri}}/media_types
+Content-Type: application/json
+
+{
+  "Name": "torps"
+}
+###
+# Updates row w/ router.put by :Id (349)  
+#  Is artistId:necessary ----?
+PUT {{uri}}/media_types/6
+Content-Type: application/json
+
+{
+  "Name": "Bon-Jovalss"
+
+}

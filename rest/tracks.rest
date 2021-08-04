@@ -1,0 +1,47 @@
+@uri=http://127.0.0.1:3005/api
+
+###
+
+GET {{uri}}/tracks
+###
+# query params
+GET {{uri}}/tracks?sort=TrackId
+
+###
+# req.params -- returns specific id (259)
+GET {{uri}}/tracks/20
+###
+# Deletes row specified by :id 
+DELETE {{uri}}/tracks/278
+
+###
+# Inserts row
+# POST not working but PUT is; weird (foreign keys?)
+POST {{uri}}/tracks
+Content-Type: application/json
+
+{
+    "Name": "I Was Made For Lovin You",
+    "AlbumId": 37,
+    "MediaTypeId": 1,
+    "GenreId": 1,
+    "Composer": "kiss",
+    "Milliseconds": 343719,
+    "Bytes": 11170334,
+    "UnitPrice": 12.99
+  }
+###
+# Updates row w/ router.put by :Id (349)  
+PUT {{uri}}/tracks/3503
+Content-Type: application/json
+
+{
+ "Name": "I Was Made For Lovin You",
+    "AlbumId": 37,
+    "MediaTypeId": 1,
+    "GenreId": 1,
+    "Composer": "kiss",
+    "Milliseconds": 343719,
+    "Bytes": 11170334,
+    "UnitPrice": 12.99
+}
