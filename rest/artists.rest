@@ -1,36 +1,43 @@
 @uri=http://127.0.0.1:3005/api
 
 ###
-
+#1 GET all artists
 GET {{uri}}/artists
+
 ###
-# query params
+#2 query params GET all artists by ArtistId desc
 GET {{uri}}/artists?sort=ArtistId
 
 ###
-# req.params -- returns specific id (259)
-GET {{uri}}/artists/20
-###
-# req.params -- returns 
-GET {{uri}}/artists/albums
-###
-# Deletes row specified by :id 
-DELETE {{uri}}/artists/278
+#3 req.params -- returns specific artist by id 
+GET {{uri}}/artists/20/albums
 
 ###
-# Inserts row
+#4 returns Artists[.id, .name] Albums[.id, Title, ArtistId]
+GET {{uri}}/artists/albums
+
+###
+#5 req.params -- returns specified album by :id 
+GET {{uri}}/artists/19/albums
+
+###
+#6 Inserts row
 POST {{uri}}/artists
 Content-Type: application/json
 
 {
   "Name": "torps"
 }
+
 ###
-# Updates row w/ router.put by :Id (349)  
-#  Is artistId:necessary ----?
+#7 Updates row w/ router.put by :Id (349)  
 PUT {{uri}}/artists/279
 Content-Type: application/json
 
 {
   "Name": "Bon-Jovaaaal"
 }
+
+###
+#8 Deletes row specified by :id 
+DELETE {{uri}}/artists/278

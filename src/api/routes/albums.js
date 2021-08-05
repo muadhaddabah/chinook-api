@@ -3,6 +3,7 @@ const router = express.Router()
 // imported database instance
 const db = require('../../utils/db')
 
+// return all by.all
 router.get("/", (req, res) => {
     const orderBy = req.query.sort ? ` order by ${req.query.sort} desc` : ""
     const stmt = db.prepare(`select * from albums ${orderBy}`)
@@ -10,6 +11,7 @@ router.get("/", (req, res) => {
     res.status(200).send(albums)
 })
 
+// get by id
 router.get("/:id", (req, res) => {
     const stmt = db.prepare('select * from albums where AlbumId = ?')
     const album = stmt.get(req.params.id)
@@ -30,6 +32,7 @@ router.put("/:id", (req, res) => {
     res.send(result)
 })
 
+// delte by id
 router.delete("/:id", (req, res) => {
     const stmt = db.prepare('delete from albums where AlbumId = ?')
     const result = stmt.run(req.params.id)

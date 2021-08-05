@@ -1,14 +1,14 @@
 @uri=http://127.0.0.1:3005/api
 
 ###
-
 GET {{uri}}/employees
+
 ###
 # query params
 GET {{uri}}/employees?sort=EmployeeId
 
 ###
-# req.params
+# req.params returns employee with EmployeeId of 7
 GET {{uri}}/employees/7
 
 ###
@@ -18,14 +18,18 @@ GET {{uri}}/employees/staff
 
 
 ###
-# req.params
+# req.params staff members with ReportsTo:1
+# staff members who ReportsTo: andrew
 GET {{uri}}/employees/1/staff
-###
-
-DELETE {{uri}}/employees/60
 
 ###
-#  cant post nor update; ReportsTo needed to be INT
+# customers whos SupportRepId:3
+GET {{uri}}/employees/3/customers
+
+
+
+###
+# ReportsTo needed to be INT
 POST {{uri}}/employees
 Content-Type: application/json
 
@@ -66,3 +70,6 @@ Content-Type: application/json
   "Fax": "+55 (11) 3033-9873",
   "Email": "do@woodstock.com.br"
 }
+
+###
+DELETE {{uri}}/employees/60

@@ -3,10 +3,11 @@ const {tableAliasFields} = require('../../utils/helpers')
 const router = express.Router()
 // imported database instance
 const db = require('../../utils/db')
+// Joining customers with employees
 const fields = ['EmployeeId', 'FirstName', 'LastName','Title', 'ReportsTo', 'BirthDate', 'HireDate', 'Address', 'City', 'State', 'Country', 'PostalCode', 'Phone', 'Fax', 'Email' ]
 const employeeFields = fields.join(",")
-//aliasing Employees.EmployeeId as `Employees.EmployeeId`
 
+// GET .all employees
 router.get("/", (req, res) => {
     const orderBy = req.query.sort ? ` order by ${req.query.sort} desc` : ""
     const stmt = db.prepare(`select * from employees ${orderBy}`)
@@ -22,12 +23,14 @@ router.get("/staff", (req, res) => {
     res.send(staff)
 })
 
+// GET specified Id
 router.get("/:id", (req, res) => {
     const stmt = db.prepare(`select ${employeeFields} from employees where EmployeeId = ?`)
     const employee = stmt.get(req.params.id)
     res.send(employee)
 })
 
+// GET staff members with ReportsTo:id
 router.get("/:id/staff", (req, res) => {
     const sql = `select ${employeeFields} from employees where ReportsTo = ?`
     const stmt = db.prepare(sql)
@@ -35,25 +38,28 @@ router.get("/:id/staff", (req, res) => {
     res.send(staff)
 })
 
+// GETS customers with SupportRepId
 router.get("/:id/customers", (req, res) => {
     const stmt = db.prepare('select * from customers where SupportRepId = ?')
     const customers = stmt.get(req.params.id)
     res.send(customers)
 })
 
+// Inserts 
 router.post("/", (req, res) => {
     const stmt = db.prepare('insert into employees (FirstName, LastName,Title, ReportsTo, BirthDate, HireDate, Address, City, State, Country, PostalCode, Phone, Fax, Email) values(:FirstName,:LastName,:Title,:ReportsTo,:BirthDate,:HireDate, :Address, :City, :State, :Country, :PostalCode, :Phone, :Fax, :Email)')
     const result = stmt.run(req.body)
     res.status(201).send(result)
 })
 
-
+// Updates
 router.put("/:id", (req, res) => {
     const stmt = db.prepare('update employees set LastName = :LastName, FirstName = :FirstName, Title = :Title, ReportsTo = :ReportsTo, BirthDate = :BirthDate, HireDate = :HireDate, Address=:Address, City=:City, State=:State, Country=:Country, PostalCode=:PostalCode, Phone=:Phone, Fax=:Fax, Email=:Email where EmployeeId = :EmployeeId')
     const result = stmt.run({...req.body, EmployeeId: req.params.id})
     res.send(result)
 })
 
+// DELETE
 router.delete("/:id", (req, res) => {
     const stmt = db.prepare('delete from employees where EmployeeId = ?')
     const result = stmt.run(req.params.id)

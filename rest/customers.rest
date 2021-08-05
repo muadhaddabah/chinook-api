@@ -1,21 +1,27 @@
 @uri=http://127.0.0.1:3005/api
 
 ###
-
+#1 GETS all customers
 GET {{uri}}/customers
+
 ###
-# query params
+#2 query params - GETS all customrs by Id desc
 GET {{uri}}/customers?sort=CustomerId
 
 ###
-# req.params
+#3 Customers and Invoices 
+GET {{uri}}/customers/invoices
+
+###
+#4 req.params Speified customer 
 GET {{uri}}/customers/59
-###
-
-DELETE {{uri}}/customers/60
 
 ###
+#5 returns specified invoice by :id -- Verify w/ the general
+GET {{uri}}/customers/20/invoices
 
+###
+#6 Inserts
 POST {{uri}}/customers
 Content-Type: application/json
 
@@ -33,8 +39,9 @@ Content-Type: application/json
   "Email": "eduardo@woodstock.com.br",
   "SupportRepId": 4
 }
+
 ###
-# updates
+#7 updates
 PUT {{uri}}/customers/60
 Content-Type: application/json
 
@@ -52,3 +59,7 @@ Content-Type: application/json
   "Email": "eduardo@woodstock.com.br",
   "SupportRepId": 4
 }
+
+###
+#8 DELETE by :id
+DELETE {{uri}}/customers/60
