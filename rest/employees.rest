@@ -34,11 +34,10 @@ POST {{uri}}/employees
 Content-Type: application/json
 
 {
-  "FirstName": "od",
+  "FirstName": "ozuulii",
   "LastName": "Mart",
   "Title": "stock-Discos",
   "ReportsTo": 1,
-  "BirthDate": "2000-03-11",
   "HireDate": "2018-13-08",
   "Address": "Dr. Falcão Filho, 1555",
   "City": "Paulo",
@@ -51,25 +50,13 @@ Content-Type: application/json
 }
 ###
 # updates
-PUT {{uri}}/employees/7
+PUT {{uri}}/employees/1
 Content-Type: application/json
 
 {
-  "LastName": "Mart",
-  "FirstName": "od",
-  "Title": "stock-Discos",
-  "ReportsTo": "Muad",
-  "BirthDate": "2000-03-11",
-  "HireDate": "2018-13-08",
-  "Address": "Dr. Falcão Filho, 1555",
-  "City": "Paulo",
-  "State": "FL",
-  "Country": "Brazil",
-  "PostalCode": "01007-01011",
-  "Phone": "+55 (11) 3033-3789",
-  "Fax": "+55 (11) 3033-9873",
-  "Email": "do@woodstock.com.br"
-}
+    
+    "PostalCode": "AK 2N1"
+  }
 
 ###
 DELETE {{uri}}/employees/60

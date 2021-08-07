@@ -1,41 +1,17 @@
+const express = require("express");
+const { GenreController } = require("../controllers");
+const router = express.Router();
 
-const express = require('express')
-const router = express.Router()
-// imported database instance
-const db = require('../../utils/db')
+router.get("/", GenreController.all);
 
-router.get("/", (req, res) => {
-    const orderBy = req.query.sort ? ` order by ${req.query.sort} desc` : ""
-    const stmt = db.prepare(`select * from genres ${orderBy}`)
-    const genres = stmt.all()
-    res.status(200).send(genres)
-})
-
-router.get("/:id", (req, res) => {
-    const stmt = db.prepare('select * from genres where GenreId = ?')
-    const artist = stmt.get(req.params.id)
-    res.send(artist)
-})
+router.get("/:id", GenreController.getById);
 
 // inserts new row
-router.post("/", (req, res) => {
-    const stmt = db.prepare('insert into genres (Name) values(:Name)')
-    const result = stmt.run(req.body)
-    res.status(201).send(result)
-})
+router.post("/", GenreController.insert);
 
 // Updates row
-router.put("/:id", (req, res) => {
-    const stmt = db.prepare('update genres set Name = :Name where GenreId = :GenreId')
-    const result = stmt.run({...req.body, GenreId: req.params.id})
-    res.send(result)
-})
+router.put("/:id", GenreController.update);
 
-router.delete("/:id", (req, res) => {
-    const stmt = db.prepare('delete from genres where GenreId = ?')
-    const result = stmt.run(req.params.id)
-    res.send(result)
-})
+router.delete("/:id");
 
-
-module.exports = router
+module.exports = router;

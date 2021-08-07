@@ -10,9 +10,7 @@ GET {{uri}}/tracks?sort=TrackId
 ###
 # req.params -- returns specific id (259)
 GET {{uri}}/tracks/20
-###
-# Deletes row specified by :id 
-DELETE {{uri}}/tracks/278
+
 
 ###
 # Inserts row
@@ -21,7 +19,7 @@ POST {{uri}}/tracks
 Content-Type: application/json
 
 {
-    "Name": "I Was Made For Lovin You",
+    "Name": "Dreamin",
     "AlbumId": 37,
     "MediaTypeId": 1,
     "GenreId": 1,
@@ -36,12 +34,10 @@ PUT {{uri}}/tracks/3503
 Content-Type: application/json
 
 {
- "Name": "I Was Made For Lovin You",
-    "AlbumId": 37,
-    "MediaTypeId": 1,
-    "GenreId": 1,
-    "Composer": "kiss",
-    "Milliseconds": 343719,
-    "Bytes": 11170334,
-    "UnitPrice": 12.99
+ "Name": "Leanin"
 }
+
+###
+# Deletes row specified by :id 
+# foregin key constraint failed ------
+DELETE {{uri}}/tracks/3501

@@ -1,21 +1,23 @@
 @uri=http://127.0.0.1:3005/api
 
 ###
-
+# 1
 GET {{uri}}/invoices
+
 ###
-# query params
+# 2 sorted invoices 
 GET {{uri}}/invoices?sort=CustomerId
 
-###
-# req.params -- returns specific id (259)
-GET {{uri}}/invoices/256
-###
-# Deletes row specified by :id
-DELETE {{uri}}/invoices/413
+### 
+#3 req.params -- returns invoices with invoice_items
+GET {{uri}}/invoices/invoice_items
 
 ###
-# Inserts row -- needed to use current customerId--
+# req.params -- returns specific id 
+GET {{uri}}/invoices/256
+
+###
+# Inserts row 
 POST {{uri}}/invoices
 Content-Type: application/json
 
@@ -30,8 +32,7 @@ Content-Type: application/json
     "Total": 7.99
   }
 ###
-# Updates row w/ router.put by  primaryKey :Id (349)
-# needed to use current customeriD
+# Updates row w/ router.put by  primaryKey :Id 
 PUT {{uri}}/invoices/413
 Content-Type: application/json
 
@@ -45,3 +46,7 @@ Content-Type: application/json
     "BillingPostalCode": "1017",
     "Total": 7.99
   }
+
+###
+# Deletes row specified by :id
+DELETE {{uri}}/invoices/413

@@ -8,12 +8,9 @@ GET {{uri}}/genres
 GET {{uri}}/genres?sort=GenreId
 
 ###
-# req.params -- returns specific id (259)
+# req.params -- returns specific id 
 GET {{uri}}/genres/20
 
-###
-# Deletes row specified by :id 
-DELETE {{uri}}/genres/278
 
 ###
 # Inserts row
@@ -25,11 +22,14 @@ Content-Type: application/json
 }
 
 ###
-# Updates row w/ router.put by :Id (349)
-# Note: Only updates what is already in the database, not new POSTS 
+# Updates row w/ router.put by :Id
 PUT {{uri}}/genres/25
 Content-Type: application/json
 
 {
-  "Name": "Bon-Jovi"
+  "Name": "Lil-Baby"
 }
+
+###
+# Deletes row specified by :id 
+DELETE {{uri}}/genres/278

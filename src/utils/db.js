@@ -1,5 +1,75 @@
-const Database = require('better-sqlite3')
+const Database = require("better-sqlite3");
 
-const db = new Database('chinook.db', {verbose: console.log})
+// connection to database
+const db = new Database("chinook.db", { verbose: console.log });
 
-module.exports = db
+const fields = {
+  albums: ["AlbumId", "Title", "ArtistId"],
+  artists: ["ArtistId", "Name"],
+  customers: [
+    "CustomerId",
+    "FirstName",
+    "LastName",
+    "Company",
+    "Address",
+    "City",
+    "State",
+    "Country",
+    "PostalCode",
+    "Phone",
+    "Fax",
+    "Email",
+    "SupportRepId",
+  ],
+  employees: [
+    "EmployeeId",
+    "FirstName",
+    "LastName",
+    "Title",
+    "ReportsTo",
+    "BirthDate",
+    "HireDate",
+    "Address",
+    "City",
+    "State",
+    "Country",
+    "PostalCode",
+    "Phone",
+    "Fax",
+    "Email",
+  ],
+  genres: ["GenreId", "Name"],
+  invoice_items: [
+    "InvoiceLineId",
+    "InvoiceId",
+    "TrackId",
+    "UnitPrice",
+    "Quantity",
+  ],
+  invoices: [
+    "InvoiceId",
+    "CustomerId",
+    "InvoiceDate",
+    "BillingAddress",
+    "BillingCity",
+    "BillingState",
+    "BillingCountry",
+    "BillingPostalCode",
+    "Total",
+  ],
+  media_types: ["MediaTypeId", "Name"],
+  playlists: ["PlaylistId", "Name"],
+  tracks: [
+    "TrackId",
+    "Name",
+    "AlbumId",
+    "MediaTypeId",
+    "GenreId",
+    "Composer",
+    "Milliseconds",
+    "Bytes",
+    "UnitPrice",
+  ],
+};
+
+module.exports = { db, fields };

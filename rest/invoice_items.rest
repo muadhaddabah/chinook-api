@@ -22,12 +22,12 @@ GET {{uri}}/invoice_items/tracks
 GET {{uri}}/invoice_items/256
 
 ###
-#5 returns specific invoice id (259)
+#5 returns specific invoice id 
 GET {{uri}}/invoice_items/25/invoices
 
 ###
-#5.5 returns specific track by id (259)
-GET {{uri}}/invoice_items/25/tracks
+#5.5 returns specific track by id 
+GET {{uri}}/invoice_items/2/tracks
 
 ###
 #6 Inserts row

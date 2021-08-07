@@ -42,24 +42,14 @@ Content-Type: application/json
 
 ###
 #7 updates
-PUT {{uri}}/customers/60
+PUT {{uri}}/customers/62
 Content-Type: application/json
 
 {
   "FirstName": "odee",
-  "LastName": "Mart",
-  "Company": "Woodstock Discos",
-  "Address": "Rua Dr. Falcão Filho, 155",
-  "City": "São Paulo",
-  "State": "SP",
-  "Country": "Brazil",
-  "PostalCode": "01007-010",
-  "Phone": "+55 (11) 3033-5446",
-  "Fax": "+55 (11) 3033-4564",
-  "Email": "eduardo@woodstock.com.br",
-  "SupportRepId": 4
+  "LastName": "Hadd"
 }
 
 ###
 #8 DELETE by :id
-DELETE {{uri}}/customers/60
+DELETE {{uri}}/customers/61

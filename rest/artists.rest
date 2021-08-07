@@ -10,7 +10,7 @@ GET {{uri}}/artists?sort=ArtistId
 
 ###
 #3 req.params -- returns specific artist by id 
-GET {{uri}}/artists/20/albums
+GET {{uri}}/artists/albums
 
 ###
 #4 returns Artists[.id, .name] Albums[.id, Title, ArtistId]
@@ -26,7 +26,7 @@ POST {{uri}}/artists
 Content-Type: application/json
 
 {
-  "Name": "torps"
+  "Name": "torps-hurricane"
 }
 
 ###

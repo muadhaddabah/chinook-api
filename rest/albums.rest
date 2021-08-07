@@ -3,6 +3,7 @@
 ###
 
 GET {{uri}}/albums
+
 ###
 # query params
 GET {{uri}}/albums?sort=ArtistId
@@ -10,19 +11,18 @@ GET {{uri}}/albums?sort=ArtistId
 ###
 # req.params -- returns specific id (259)
 GET {{uri}}/albums/256
-###
-# Deletes row specified by :id
-DELETE {{uri}}/albums/350
 
 ###
-# Inserts row
+# Inserts row  -- Not wokring
 POST {{uri}}/albums
 Content-Type: application/json
 
 {
-  "Title": "BonJovi",
-  "ArtistId" : "277"
+  "Title": "bo",
+  "ArtistId": 350
+
 }
+
 ###
 # Updates row w/ router.put by AlbumId (349)
 PUT {{uri}}/albums/347
@@ -32,3 +32,7 @@ Content-Type: application/json
   "Title": "Bon-Jovi",
    "ArtistId": "275"
 }
+
+###
+# Deletes row specified by :id
+DELETE {{uri}}/albums/351
