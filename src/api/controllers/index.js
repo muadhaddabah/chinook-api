@@ -1,4 +1,4 @@
-const { db, fields } = require("../../utils/db");
+const { db, tables } = require("../../utils/db");
 const AlbumController = require("./AlbumController");
 const ArtistController = require("./ArtistController");
 const CustomerController = require("./CustomerController");
@@ -11,14 +11,14 @@ const PlaylistController = require("./PlaylistController");
 const TrackController = require("./TrackController");
 
 module.exports = {
-  AlbumController: new AlbumController(db, fields),
-  ArtistController: new ArtistController(db, fields),
-  CustomerController: new CustomerController(db, fields),
-  EmployeeController: new EmployeeController(db, fields),
-  GenreController: new GenreController(db, fields),
-  InvoiceController: new InvoiceController(db, fields),
-  InvoiceItemController: new InvoiceItemController(db, fields),
-  mediaTypeController: new mediaTypeController(db, fields),
-  PlaylistController: new PlaylistController(db, fields),
-  TrackController: new TrackController(db, fields),
+  AlbumController: new AlbumController(db, tables, "albums"),
+  ArtistController: new ArtistController(db, tables, "artists"),
+  CustomerController: new CustomerController(db, tables, "customers"),
+  EmployeeController: new EmployeeController(db, tables, "employees"),
+  GenreController: new GenreController(db, tables, "genres"),
+  InvoiceController: new InvoiceController(db, tables, "invoices"),
+  InvoiceItemController: new InvoiceItemController(db, tables, "invoice_items"),
+  mediaTypeController: new mediaTypeController(db, tables, "media_types"),
+  PlaylistController: new PlaylistController(db, tables, "playlists"),
+  TrackController: new TrackController(db, tables, "tracks"),
 };

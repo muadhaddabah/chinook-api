@@ -17,10 +17,9 @@
   "devDependencies": {
     "nodemon": "^2.0.12"
   },
-
   "nodemonConfig": {
     "restartable": "rs",
-    "ignore":[
+    "ignore": [
       ".git",
       "node_modules/**/node_modules"
     ],

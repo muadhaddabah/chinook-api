@@ -2,7 +2,7 @@ const express = require("express");
 const { PlaylistController } = require("../controllers");
 const router = express.Router();
 
-router.get("/", PlaylistController.getAll);
+router.get("/", PlaylistController.all);
 
 router.get("/:id", PlaylistController.getById);
 

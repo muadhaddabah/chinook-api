@@ -1,44 +1,26 @@
 const BaseController = require("./BaseController");
 
 class EmployeeController extends BaseController {
-  constructor(db, fields) {
-    super();
-    this.db = db;
-    this.fields = fields;
-
-    this.employeeFields = fields.employees.join(",");
+  constructor(db, tables, tableName) {
+    // have to call super since we're inheriting from base controller 
+    super(db, tables, tableName);
   }
-
-  all = (req, res) => {
-    const orderBy = req.query.sort ? ` order by ${req.query.sort} desc` : "";
-    const stmt = this.db.prepare(`select * from employees ${orderBy}`);
-    const employees = stmt.all();
-    res.status(200).send(employees);
-  };
 
   staff = (req, res) => {
     const sql = `select ${this.tableAliasFields(
       "Employees",
-      this.fields.employees
+      this.tables.employees.fields
     )}, ${this.tableAliasFields(
       "Managers",
-      this.fields.employees
+      this.tables.employees.fields
     )} from employees as Employees join employees as Managers on Employees.ReportsTo = Managers.EmployeeId order by Managers.EmployeeId`;
     const stmt = this.db.prepare(sql);
     const staff = stmt.all();
     res.send(staff);
   };
 
-  getByPk = (req, res) => {
-    const stmt = this.db.prepare(
-      `select ${this.employeeFields} from employees where EmployeeId = ?`
-    );
-    const employee = stmt.get(req.params.id);
-    res.send(employee);
-  };
-
   getStaffByPk = (req, res) => {
-    const sql = `select ${this.employeeFields} from employees where ReportsTo = ?`;
+    const sql = `select ${this.fieldsList} from employees where ReportsTo = ?`;
     const stmt = this.db.prepare(sql);
     const staff = stmt.all(req.params.id);
     res.send(staff);
@@ -52,36 +34,6 @@ class EmployeeController extends BaseController {
     res.send(customers);
   };
 
-  create = (req, res) => {
-    const insertFields = Object.keys(req.body);
-    const insertValuesPlaceholders = insertFields
-      .map((field) => `:${field}`)
-      .join(",");
-    const stmt = this.db.prepare(
-      `insert into employees (${insertFields.join(
-        ","
-      )}) values(${insertValuesPlaceholders})`
-    );
-    const result = stmt.run(req.body);
-    res.status(201).send(result);
-  };
-
-  update = (req, res) => {
-    const updateFields = Object.keys(req.body)
-      .map((field) => `${field} = :${field}`)
-      .join(",");
-    const stmt = this.db.prepare(
-      `update employees set ${updateFields} where EmployeeId = :EmployeeId`
-    );
-    const result = stmt.run({ ...req.body, EmployeeId: req.params.id });
-    res.send(result);
-  };
-
-  del = (req, res) => {
-    const stmt = this.db.prepare("delete from employees where EmployeeId = ?");
-    const result = stmt.run(req.params.id);
-    res.send(result);
-  };
 }
 
 module.exports = EmployeeController;

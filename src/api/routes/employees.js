@@ -9,7 +9,7 @@ router.get("/", EmployeeController.all);
 router.get("/staff", EmployeeController.staff);
 
 // GET specified Id
-router.get("/:id", EmployeeController.getByPk);
+router.get("/:id", EmployeeController.getById);
 
 // GET staff members with ReportsTo:id
 router.get("/:id/staff", EmployeeController.getStaffByPk);
@@ -18,7 +18,7 @@ router.get("/:id/staff", EmployeeController.getStaffByPk);
 router.get("/:id/customers", EmployeeController.getCustomersByPk);
 
 // Inserts
-router.post("/", EmployeeController.create);
+router.post("/", EmployeeController.insert);
 
 // Updates
 router.put("/:id", EmployeeController.update);

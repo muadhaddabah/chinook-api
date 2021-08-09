@@ -8,7 +8,7 @@ const app = express()
 // added middleware
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
 // customer routes
 app.use('/api/customers', require('./src/api/routes/customers'))
