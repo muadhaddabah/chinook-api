@@ -1,4 +1,5 @@
 const express = require("express");
+const { checkRequiredFieldsExist, validate } = require("../middleware/validation")
 const { ArtistController } = require("../controllers");
 const router = express.Router();
 
@@ -16,7 +17,7 @@ router.get("/:id", ArtistController.getById);
 router.get("/:id/albums", ArtistController.getAlbumByPk);
 
 //6 inserts new row
-router.post("/", ArtistController.insert);
+router.post("/", checkRequiredFieldsExist("new-artist"), validate("new-artist"), ArtistController.insert);
 
 //7 Updates row
 router.put("/:id", ArtistController.update);
