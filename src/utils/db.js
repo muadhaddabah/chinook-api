@@ -104,4 +104,4 @@ const tables = {
 }
 
 
-module.exports = { db, fields, tables };
+module.exports = { db, tables };

@@ -14,7 +14,7 @@ GET {{uri}}/customers/invoices
 
 ###
 #4 req.params Speified customer 
-GET {{uri}}/customers/59
+GET {{uri}}/customers/56
 
 ###
 #5 returns specified invoice by :id -- Verify w/ the general
