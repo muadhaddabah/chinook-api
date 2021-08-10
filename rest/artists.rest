@@ -31,11 +31,11 @@ Content-Type: application/json
 
 ###
 #7 Updates row w/ router.put by :Id (349)  
-PUT {{uri}}/artists/279
+PUT {{uri}}/artists/285
 Content-Type: application/json
 
 {
-  "Name": "Bon-Jovaaaal"
+  "Name": "jkl"
 }
 
 ###

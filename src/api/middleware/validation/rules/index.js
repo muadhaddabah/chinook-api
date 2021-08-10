@@ -1,3 +1,3 @@
 module.exports = {
-    "new-artist": require("./new-artist")
+    "artist": require("./artist")
 }

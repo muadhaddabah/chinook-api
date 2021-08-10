@@ -17,10 +17,10 @@ router.get("/:id", ArtistController.getById);
 router.get("/:id/albums", ArtistController.getAlbumByPk);
 
 //6 inserts new row
-router.post("/", checkRequiredFieldsExist("new-artist"), validate("new-artist"), ArtistController.insert);
+router.post("/", checkRequiredFieldsExist("artist"), validate("artist"), ArtistController.insert);
 
 //7 Updates row
-router.put("/:id", ArtistController.update);
+router.put("/:id", validate("artist"), ArtistController.update);
 
 // 8 DELETE
 router.delete("/:id", ArtistController.del);

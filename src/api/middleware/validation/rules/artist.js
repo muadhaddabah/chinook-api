@@ -1,5 +1,4 @@
 const { isEmpty, isEmail } = require("../lib/validators")
-const filterErrorMessages = require("../lib/filterErrorMessages")
 const optionalField = require("../lib/optionalField")
 
 module.exports = {
@@ -8,12 +7,13 @@ module.exports = {
     ],
     fields: data => {
         return {
-            Name: filterErrorMessages([
+            Name: optionalField("Name", data, [
                 isEmpty("Name", data.Name)
             ]),
-            Email: optionalField(data.Email, filterErrorMessages([
-                isEmail("Email", data.Email)
-            ]))
+            Email: optionalField("Email", data, [
+                isEmail("Email", data.Email),
+                isEmpty("Email", data.Email)
+            ])
         }
     }
 
