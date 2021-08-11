@@ -18,19 +18,17 @@ POST {{uri}}/albums
 Content-Type: application/json
 
 {
-  "Title": "bo",
-  "ArtistId": 275
+  "Title": "bobbert"
 
 }
 
 ###
 # Updates row w/ router.put by AlbumId (349)
-PUT {{uri}}/albums/347
+PUT {{uri}}/albums/353
 Content-Type: application/json
 
 {
-  "Title": "Bon-Jovi",
-   "ArtistId": "275"
+  "Title": "Bonni"
 }
 
 ###

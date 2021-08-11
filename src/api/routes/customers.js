@@ -1,4 +1,5 @@
 const express = require("express");
+const { checkRequiredFieldsExist, validate } = require("../middleware/validation")
 const { CustomerController } = require("../controllers");
 const router = express.Router();
 
@@ -15,10 +16,10 @@ router.get("/:id", CustomerController.getById);
 router.get("/:id/invoices", CustomerController.getInvoiceById);
 
 //6 Inserts row into Customers
-router.post("/", CustomerController.insert);
+router.post("/", checkRequiredFieldsExist("customer"), validate("customer"), CustomerController.insert);
 
 //7 Updates by :id
-router.put("/:id", CustomerController.update);
+router.put("/:id", validate("customer"), CustomerController.update);
 
 //8 DELETES
 router.delete("/:id", CustomerController.del);

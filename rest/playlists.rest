@@ -16,7 +16,7 @@ POST {{uri}}/playlists
 Content-Type: application/json
 
 {
-  "Name": "muad_the_freestyler"
+  "Name": ""
 }
 
 ###

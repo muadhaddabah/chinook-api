@@ -1,4 +1,5 @@
 const express = require("express");
+const { checkRequiredFieldsExist, validate } = require("../middleware/validation")
 const { EmployeeController } = require("../controllers");
 const router = express.Router();
 
@@ -18,10 +19,10 @@ router.get("/:id/staff", EmployeeController.getStaffByPk);
 router.get("/:id/customers", EmployeeController.getCustomersByPk);
 
 // Inserts
-router.post("/", EmployeeController.insert);
+router.post("/", checkRequiredFieldsExist("employee"), validate("employee"), EmployeeController.insert);
 
 // Updates
-router.put("/:id", EmployeeController.update);
+router.put("/:id", validate("employee"), EmployeeController.update);
 
 // DELETE
 router.delete("/:id", EmployeeController.del);

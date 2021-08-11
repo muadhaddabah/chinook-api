@@ -17,16 +17,16 @@ POST {{uri}}/media_types
 Content-Type: application/json
 
 {
-  "Name": "torps"
+  "Name": "Moe"
 }
 
 ###
 # Updates row w/ router.put by :Id   
-PUT {{uri}}/media_types/6
+PUT {{uri}}/media_types/7
 Content-Type: application/json
 
 {
-  "Name": "Bon-Jovalss"
+  "Name": "Ayo"
 
 }
 

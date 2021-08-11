@@ -36,10 +36,10 @@ POST {{uri}}/invoice_items
 Content-Type: application/json
 
 {
-   "InvoiceId": 412,
-    "TrackId": 3177,
-    "UnitPrice": 29.99,
-    "Quantity": 4
+   "InvoiceId": "42",
+    "TrackId": "3447",
+    "UnitPrice": "219.99",
+    "Quantity": "2"
   }
 
 ###
@@ -48,10 +48,7 @@ PUT {{uri}}/invoice_items/2240
 Content-Type: application/json
 
 {
-    "InvoiceId": 412,
-    "TrackId": 5577,
-    "UnitPrice": 29.99,
-    "Quantity": 4
+    "UnitPrice":" 129.99"
   }
 
 ###

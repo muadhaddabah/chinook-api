@@ -1,4 +1,5 @@
 const express = require("express");
+const { checkRequiredFieldsExist, validate } = require("../middleware/validation")
 const { TrackController } = require("../controllers");
 const router = express.Router();
 // imported database instance
@@ -9,10 +10,10 @@ router.get("/", TrackController.all);
 router.get("/:id", TrackController.getById);
 
 // inserts new row
-router.post("/", TrackController.insert);
+router.post("/", checkRequiredFieldsExist("track"), validate("track"), TrackController.insert);
 
 // Updates row
-router.put("/:id", TrackController.update);
+router.put("/:id", validate("track"), TrackController.update);
 
 router.delete("/:id", TrackController.del);
 

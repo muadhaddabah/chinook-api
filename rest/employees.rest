@@ -34,28 +34,25 @@ POST {{uri}}/employees
 Content-Type: application/json
 
 {
-  "FirstName": "ozuulii",
-  "LastName": "Mart",
-  "Title": "stock-Discos",
-  "ReportsTo": 1,
+  "FirstName": "pop",
+  "LastName": "Martha",
+  "ReportsTo": "1",
+  "BirthDate": "2010-13-07",
   "HireDate": "2018-13-08",
   "Address": "Dr. Falcão Filho, 1555",
   "City": "Paulo",
   "State": "FL",
-  "Country": "Brazil",
-  "PostalCode": "01007-01011",
+  "Country": "Germany",
   "Phone": "+55 (11) 3033-3789",
-  "Fax": "+55 (11) 3033-9873",
   "Email": "do@woodstock.com.br"
 }
 ###
 # updates
-PUT {{uri}}/employees/1
+PUT {{uri}}/employees/14
 Content-Type: application/json
 
-{
-    
-    "PostalCode": "AK 2N1"
+  {   
+  "LastName": "Martini"
   }
 
 ###

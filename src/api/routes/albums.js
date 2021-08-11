@@ -1,4 +1,5 @@
 const express = require("express");
+const { checkRequiredFieldsExist, validate } = require("../middleware/validation")
 const { AlbumController } = require("../controllers");
 const router = express.Router();
 
@@ -9,10 +10,10 @@ router.get("/", AlbumController.all);
 router.get("/:id", AlbumController.getById);
 
 // inserts a new row
-router.post("/", AlbumController.insert);
+router.post("/", checkRequiredFieldsExist("album"), validate("album"), AlbumController.insert);
 
 // Updates row
-router.put("/:id", AlbumController.update);
+router.put("/:id", validate("album"), AlbumController.update);
 
 // delte by id
 router.delete("/:id", AlbumController.del);

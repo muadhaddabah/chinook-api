@@ -26,28 +26,25 @@ POST {{uri}}/customers
 Content-Type: application/json
 
 {
-  "FirstName": "odllll",
-  "LastName": "Mart",
-  "Company": "Woodstock Discos",
-  "Address": "Rua Dr. Falcão Filho, 155",
-  "City": "São Paulo",
-  "State": "SP",
-  "Country": "Brazil",
-  "PostalCode": "01007-010",
-  "Phone": "+55 (11) 3033-5446",
-  "Fax": "+55 (11) 3033-4564",
-  "Email": "eduardo@woodstock.com.br",
-  "SupportRepId": 4
-}
+      "FirstName": "PunChinese",
+      "LastName": "Srivava",
+      "Address": "3,Raj Bhavan Road",
+      "City": "Bangalore",
+      "State": "OH",
+      "Country": "India",
+      "PostalCode": "560001",
+      "Phone": "+91 080 22289999",
+      "Email": "puja_sa@yahoo.in"
+    }
 
 ###
 #7 updates
-PUT {{uri}}/customers/62
+PUT {{uri}}/customers/64
 Content-Type: application/json
 
 {
   "FirstName": "odee",
-  "LastName": "Hadd"
+  "LastName": "Hadda-litleLam"
 }
 
 ###

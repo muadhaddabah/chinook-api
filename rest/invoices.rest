@@ -14,7 +14,7 @@ GET {{uri}}/invoices/invoice_items
 
 ###
 # req.params -- returns specific id 
-GET {{uri}}/invoices/256
+GET {{uri}}/invoices/417
 
 ###
 # Inserts row 
@@ -22,29 +22,22 @@ POST {{uri}}/invoices
 Content-Type: application/json
 
 {
-    "CustomerId": 59,
+    "CustomerId": "58",
     "InvoiceDate": "2012-2-2 00:00:00",
-    "BillingAddress": "12,Commun",
-    "BillingCity": "Deli",
-    "BillingState": "FL",
+    "BillingAddress": "12,Comminsing",
+    "BillingCity": "Delited",
+    "BillingState": "FLawda",
     "BillingCountry": "Indiana",
     "BillingPostalCode": "1017",
-    "Total": 7.99
+    "Total": "17.99"
   }
 ###
 # Updates row w/ router.put by  primaryKey :Id 
-PUT {{uri}}/invoices/413
+PUT {{uri}}/invoices/417
 Content-Type: application/json
 
 {
-    "CustomerId": 59,
-    "InvoiceDate": "2012-2-2 00:00:00",
-    "BillingAddress": "12,Commun",
-    "BillingCity": "Delic",
-    "BillingState": "FLawda",
-    "BillingCountry": "India",
-    "BillingPostalCode": "1017",
-    "Total": 7.99
+      "BillingState": "FLorida"
   }
 
 ###
