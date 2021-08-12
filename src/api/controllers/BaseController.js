@@ -73,7 +73,11 @@ class BaseController {
       const result = stmt.run(req.params.id);
       res.status(200).send({ success: true, data: result, message: `${this.tableName}.all() ran` });
     } catch (error) {
-      res.status(400).send({ success: false, message: error.messag, error })
+      let status = 400
+      if (error.message.toLowerCase().includes("foreign key")) {
+        status = 419
+      }
+      res.status(status).send({ success: false, message: error.message, error, code: status })
     }
   };
 

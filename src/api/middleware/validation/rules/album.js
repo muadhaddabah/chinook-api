@@ -3,7 +3,9 @@ const optionalField = require("../lib/optionalField")
 
 module.exports = {
     required: [
-        "Title"
+        "Title",
+        "ArtistId"
+
     ],
     fields: data => {
         return {

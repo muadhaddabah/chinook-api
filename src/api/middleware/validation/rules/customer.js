@@ -37,11 +37,11 @@ module.exports = {
             ]),
             PostalCode: optionalField("PostalCode", data, [
                 isEmpty("PostalCode", data.PostalCode),
-                // isPostalCode("PostalCode", data.PostalCode)
+                isPostalCode("PostalCode", data.PostalCode)
             ]),
             Phone: optionalField("Phone", data, [
                 isEmpty("Phone", data.Phone),
-                // isMobilePhone("Phone", data.Phone)
+                isMobilePhone("Phone", data.Phone)
             ]),
             Fax: optionalField("Fax", data, [
                 isEmpty("Fax", data.Fax)

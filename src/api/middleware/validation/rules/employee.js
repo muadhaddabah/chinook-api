@@ -14,7 +14,6 @@ module.exports = {
         "Country",
         "Phone",
         "Email"
-
     ],
     fields: data => {
         return {
