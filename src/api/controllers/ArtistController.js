@@ -35,4 +35,15 @@ class ArtistController extends BaseController {
 
 }
 
+// SELECT  a.Name, al.Title, t.Name, t.TrackId, ii.InvoiceLineId, count(ii.TrackId), t.UnitPrice, sum(ii.UnitPrice) as totalSales
+// from artists as a
+// join albums as al
+// on a.ArtistId = al.ArtistId
+// join tracks as t
+// on al.AlbumId = t.AlbumId
+// inner join invoice_items as ii
+// on t.TrackId = ii.TrackId
+// group by t.TrackId
+// order by totalSales desc
+
 module.exports = ArtistController;

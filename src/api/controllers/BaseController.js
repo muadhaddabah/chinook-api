@@ -53,6 +53,8 @@ class BaseController {
   };
 
   update = (req, res) => {
+    console.log("🚀 ~ file: BaseController.js ~ line 56 ~ BaseController ~ req", req.body)
+
     try {
       const updateFields = Object.keys(req.body)
         .map((field) => `${field} = :${field}`)
@@ -61,6 +63,7 @@ class BaseController {
         `update ${this.tableName} set ${updateFields} where ${this.pk} = :${this.pk}`
       );
       const result = stmt.run({ ...req.body, [this.pk]: req.params.id });
+      console.log("🚀 ~ file: BaseController.js ~ line 64 ~ BaseController ~ result", result)
       res.status(200).send({ success: true, data: result, message: `${this.tableName}.all() ran` });
     } catch (error) {
       res.status(400).send({ success: false, message: error.message, error })

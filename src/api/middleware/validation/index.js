@@ -26,7 +26,7 @@ const validate = rule => async (req, res, next) => {
         next()
         return
     }
-    res.status(422).send({ combinedErrors })
+    res.status(422).send({ success: false, message: "validation errors", errors: { ...combinedErrors } })
 }
 
 module.exports = { checkRequiredFieldsExist, validate }
