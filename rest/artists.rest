@@ -17,8 +17,12 @@ GET {{uri}}/artists/albums
 GET {{uri}}/artists/albums
 
 ###
+#
+GET {{uri}}/artists/albumss
+
+###
 #5 req.params -- returns specified album by :id 
-GET {{uri}}/artists/19/albums
+GET {{uri}}/artists/1
 
 ###
 #6 Inserts row

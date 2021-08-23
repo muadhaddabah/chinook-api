@@ -69,7 +69,7 @@ const tables = {
   },
   invoice_items: {
     pk: "InvoiceLineId",
-    alias: "InvoiceItem",
+    alias: "Invoice_Item",
     fields: [
       "InvoiceLineId",
       "InvoiceId",
