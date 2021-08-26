@@ -9,7 +9,7 @@ GET {{uri}}/genres?sort=GenreId
 
 ###
 # req.params -- returns specific id 
-GET {{uri}}/genres/20
+GET {{uri}}/genres/1
 
 
 ###

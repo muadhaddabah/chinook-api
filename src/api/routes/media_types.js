@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get("/", mediaTypeController.all);
 
+router.get("/:id/trac", mediaTypeController.getTracks);
+
 router.get("/:id", mediaTypeController.getById);
 
 // inserts new row

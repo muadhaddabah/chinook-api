@@ -9,7 +9,11 @@ GET {{uri}}/media_types?sort=MediaTypeId
 
 ###
 # req.params -- returns specific id 
-GET {{uri}}/media_types/20
+GET {{uri}}/media_types/1
+
+###
+#  
+GET {{uri}}/media_types/3/trac
 
 ###
 # Inserts row

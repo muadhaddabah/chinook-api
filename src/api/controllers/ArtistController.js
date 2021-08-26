@@ -84,7 +84,10 @@ class ArtistController extends BaseController {
       const results = {
         ArtistId: queryResults[0]["Artist.ArtistId"],
         Name: queryResults[0]["Artist.Name"],
-        Albums: tracksByAlbum.map(it => ({ AlbumId: it[0]["Album.AlbumId"], Title: it[0]["Album.Title"], Tracks: it.map(track => filterObjectByKey(track, "track")) }))
+        Albums: tracksByAlbum.map(it => ({
+          AlbumId: it[0]["Album.AlbumId"], Title: it[0]["Album.Title"],
+          Tracks: it.map(track => filterObjectByKey(track, "track"))
+        }))
       }
 
       res.status(200).send({ success: true, data: results, message: `${this.tableName}.all() ran` })

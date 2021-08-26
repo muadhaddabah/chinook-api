@@ -10,11 +10,11 @@ GET {{uri}}/artists?sort=ArtistId
 
 ###
 #3 req.params -- returns specific artist by id 
-GET {{uri}}/artists/albums
+GET {{uri}}/artists/sales
 
 ###
 #4 returns Artists[.id, .name] Albums[.id, Title, ArtistId]
-GET {{uri}}/artists/albums
+GET {{uri}}/artists/1
 
 ###
 #

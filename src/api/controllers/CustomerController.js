@@ -1,3 +1,4 @@
+const { groupBy } = require("../../utils/helpers");
 const BaseController = require("./BaseController");
 
 class CustomerController extends BaseController {
@@ -35,6 +36,66 @@ class CustomerController extends BaseController {
       res.status(404).send({ success: false, message: error.message, error })
     }
   };
+
+  getHistory = (req, res) => {
+    try {
+      const sql = `SELECT ${this.tableAliasFields('Customer', ['CustomerId', 'FirstName', 'LastName'])},
+      ${this.tableAliasFields('Invoice', ['InvoiceDate', 'Total'])},
+      ${this.tableAliasFields('Invoice_Item', ['InvoiceId', 'TrackId', 'UnitPrice'])}, count(Invoice_Item.InvoiceId) as 'Invoice_Item.Count',
+      ${this.tableAliasFields('Track', ['TrackId', 'Name'])}
+      from customers as Customer 
+      join invoices as Invoice
+      on Customer.CustomerId = Invoice.CustomerId
+      join invoice_items as Invoice_Item
+      on Invoice.InvoiceId = Invoice_Item.InvoiceId
+      join tracks as Track
+      on Invoice_item.TrackId = Track.TrackId
+      Where Customer.CustomerId = ${req.params.id}
+      group by Invoice.InvoiceId`
+      console.log("🚀 ~ file: CustomerController.js ~ line 43 ~ CustomerController ~ sql", sql)
+      const stmt = this.db.prepare(`${sql}`)
+      const queryResults = stmt.all()
+      console.log("🚀 ~ file: CustomerController.js ~ line 57 ~ CustomerController ~ queryResults", queryResults)
+
+      const results = []
+      let temp = {
+        Invoice: {},
+        Invoice_Item: {},
+        Track: {}
+      }
+
+      queryResults.forEach(customer => {
+        temp = {
+          Invoice: {},
+          Invoice_Item: {},
+          Track: {}
+        }
+
+        Object.keys(customer).forEach(field => {
+          const arr = field.split(".")
+
+          if (arr[0].toLowerCase() === "customer") {
+            temp[arr[1]] = customer[field]
+          } else {
+            temp[arr[0]][arr[1]] = customer[field]
+          }
+        })
+        results.push(temp)
+      });
+      res.status(200).send({ success: true, data: results, message: `${this.tableName}.all() ran` })
+
+    } catch (error) {
+      console.log("🚀 ~ file: CustomerController.js ~ line 94 ~ CustomerController ~ error", error)
+      res.status(404).send({ success: false, message: error.message, error })
+
+    }
+  }
 }
 
+// const invoicesByCustomer = Object.values(groupBy(queryResults, "Invoice.InvoiceId"))
+// const results = {
+//   CustomerId: queryResults[0]["Customer.CustomerId"],
+//   FirstName: queryResults[0]["Customer.FirstName"],
+//   LastName: queryResults[0]["Customer.LastName"],
+// }
 module.exports = CustomerController;

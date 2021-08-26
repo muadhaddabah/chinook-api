@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get("/", GenreController.all);
 
+// router.get("/:id", GenreController.displayAlbums);
 router.get("/:id", GenreController.getById);
 
 // inserts new row
