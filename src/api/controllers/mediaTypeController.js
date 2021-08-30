@@ -22,28 +22,11 @@ class mediaTypeController extends BaseController {
       const queryResults = stmt.all()
       console.log("🚀 ~ file: mediaTypeController.js ~ line 24 ~ mediaTypeController ~ queryResults", queryResults)
 
-      const results = []
-      let temp = {
-        Track: {}
+      const results = {
+        ...filterObjectByKey(queryResults[0], "mediatype"),
+        tracks: queryResults.map(it => ({ ...filterObjectByKey(it, "track") }))
       }
 
-      queryResults.forEach(media_type => {
-        temp = {
-          Track: {}
-        }
-
-        Object.keys(media_type).forEach(field => {
-          const arr = field.split(".")
-
-          if (arr[0].toLowerCase() === "mediatype") {
-            temp[arr[1]] = media_type[field]
-          } else {
-            temp[arr[0]][arr[1]] = media_type[field]
-          }
-        })
-        results.push(temp)
-
-      })
       res.status(200).send({ success: true, data: results, message: `${this.tableName}.all() ran` })
     } catch (error) {
       console.log("🚀 ~ file: mediaTypeController.js ~ line 59 ~ mediaTypeController ~ error", error)

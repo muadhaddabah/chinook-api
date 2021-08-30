@@ -7,6 +7,8 @@ const router = express.Router();
 router.get("/", CustomerController.all);
 
 router.get("/:id/history", CustomerController.getHistory);
+
+router.get("/:id/spc", CustomerController.getSalesPerCustomer);
 //3 joining invoices with customers and renaming fields with tAF function (helper)
 router.get("/invoices", CustomerController.joinInvoices);
 

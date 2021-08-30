@@ -11,6 +11,9 @@ GET {{uri}}/customers?sort=CustomerId
 ###
 #2 query params - GETS all customrs by Id desc
 GET {{uri}}/customers/1/history
+###
+#2 query params - GETS all customrs by Id desc
+GET {{uri}}/customers/1/spc
 
 ###
 #3 Customers and Invoices 

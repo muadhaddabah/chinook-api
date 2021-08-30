@@ -12,6 +12,8 @@ router.get("/staff", EmployeeController.staff);
 // GET specified Id
 router.get("/:id", EmployeeController.getById);
 
+router.get("/:id/cust", EmployeeController.getcustomersPerEmployee);
+
 // GET staff members with ReportsTo:id
 router.get("/:id/staff", EmployeeController.getStaffByPk);
 

@@ -9,7 +9,7 @@ GET {{uri}}/employees?sort=EmployeeId
 
 ###
 # req.params returns employee with EmployeeId of 7
-GET {{uri}}/employees/7
+GET {{uri}}/employees/3/cust
 
 ###
 # req.params
