@@ -3,6 +3,9 @@
 ###
 
 GET {{uri}}/albums
+###
+
+GET {{uri}}/albums/sz
 
 ###
 # query params
@@ -10,7 +13,7 @@ GET {{uri}}/albums?sort=ArtistId
 
 ###
 # req.params -- returns specific id (259)
-GET {{uri}}/albums/256
+GET {{uri}}/albums/1
 
 ###
 # Inserts row  -- Not wokring

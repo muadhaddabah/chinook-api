@@ -6,6 +6,8 @@ const router = express.Router();
 // return all by.all
 router.get("/", AlbumController.all);
 
+router.get("/sz", AlbumController.getSalesPerAlbum);
+
 // get by id
 router.get("/:id", AlbumController.getById);
 

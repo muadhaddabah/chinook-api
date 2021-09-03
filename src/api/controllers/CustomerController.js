@@ -41,7 +41,9 @@ class CustomerController extends BaseController {
     try {
       const sql = `SELECT ${this.tables.customers.aliasedFields},
       ${this.tableAliasFields('Invoice', ['InvoiceId', 'InvoiceDate', 'Total'])},
-      ${this.tableAliasFields('Invoice_Item', ['InvoiceLineId', 'InvoiceId', 'TrackId', 'UnitPrice'])}, count(Invoice_Item.InvoiceId) as 'Invoice_Item.Count',
+      ${this.tableAliasFields('Invoice_Item', ['InvoiceLineId', 'InvoiceId', 'TrackId', 'UnitPrice'])}, 
+      count(Invoice_Item.InvoiceId) as 'Invoice_Item.Count',
+      sum(Invoice_Item.Quantity * Invoice_Item.UnitPrice) as 'Invoice_Item.totalSales',
       ${this.tableAliasFields('Track', ['TrackId', 'Name'])}
       from customers as Customer 
       join invoices as Invoice
@@ -51,7 +53,7 @@ class CustomerController extends BaseController {
       join tracks as Track
       on Invoice_item.TrackId = Track.TrackId
       Where Customer.CustomerId = ${req.params.id}
-      group by Invoice_Item.InvoiceLineId`
+      group by Invoice_Item.InvoiceId`
       console.log("🚀 ~ file: CustomerController.js ~ line 43 ~ CustomerController ~ sql", sql)
       const stmt = this.db.prepare(`${sql}`)
       const queryResults = stmt.all()
@@ -81,7 +83,8 @@ class CustomerController extends BaseController {
     try {
       const sql = `select ${this.tableAliasFields('Customer', ['CustomerId', 'FirstName', 'LastName'])},
       ${this.tableAliasFields('Invoice', ['InvoiceId'])},
-      ${this.tableAliasFields('Invoice_Item', ['UnitPrice'])}, sum(Invoice_Item.Quantity * Invoice_Item.UnitPrice) as 'Invoice.totalSales' 
+      ${this.tableAliasFields('Invoice_Item', ['UnitPrice'])},
+       sum(Invoice_Item.Quantity * Invoice_Item.UnitPrice) as 'Invoice.totalSales'
       from customers as Customer
       join invoices as Invoice
       on Customer.CustomerId = Invoice.CustomerId

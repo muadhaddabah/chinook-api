@@ -10,7 +10,8 @@ class ArtistController extends BaseController {
     try {
       const { artists, albums } = this.tables
       const sql = `select ${artists.aliasedFields}, ${albums.aliasedFields}
-       from artists as Artist join albums as Album on Artist.ArtistId = Album.ArtistId `
+       from artists as Artist join albums as Album 
+       on Artist.ArtistId = Album.ArtistId `
       // const orderBy = req.query.sort ? ` order by ${req.query.sort} desc` : "";
       const stmt = this.db.prepare(`${sql} limit 0,50`);
       const queryResults = stmt.all();
@@ -100,8 +101,11 @@ class ArtistController extends BaseController {
   getAlbumSales = (req, res) => {
     try {
       // const { artists, albums, tracks, invoice_items } = this.tables
-      const sql = `SELECT  ${this.tableAliasFields('Artist', ['ArtistId', 'Name'])}, ${this.tableAliasFields('Album', ['AlbumId', 'Title'])}, ${this.tableAliasFields('Track', ['Name', 'TrackId'])},
-      ${this.tableAliasFields('Invoice_Item', ['Quantity', 'UnitPrice'])},  count(Invoice_Item.TrackId) as 'Artist.Count',  sum(Invoice_Item.UnitPrice) as 'Artist.totalSales'
+      const sql = `SELECT  ${this.tableAliasFields('Artist', ['ArtistId', 'Name'])},
+       ${this.tableAliasFields('Album', ['AlbumId', 'Title'])}, 
+       ${this.tableAliasFields('Track', ['Name', 'TrackId'])},
+      ${this.tableAliasFields('Invoice_Item', ['Quantity', 'UnitPrice'])},  count(Invoice_Item.TrackId) as 'Artist.Count',
+        sum(Invoice_Item.UnitPrice) as 'Artist.totalSales'
       from artists as Artist
       join albums as Album
       on Artist.ArtistId = Album.ArtistId
@@ -147,7 +151,6 @@ class ArtistController extends BaseController {
       res.status(404).send({ success: false, message: error.message, error })
     }
   }
-
 }
 
 // SELECT  a.Name, al.Title, t.Name, t.TrackId, ii.InvoiceLineId, count(ii.TrackId), t.UnitPrice, sum(ii.UnitPrice) as totalSales

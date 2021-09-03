@@ -57,7 +57,7 @@ class EmployeeController extends BaseController {
       const sql = `select  ${this.tables.employees.aliasedFields}, 
       ${this.tableAliasFields('Customer', ['CustomerId', 'FirstName', 'LastName', 'Phone', 'SupportRepId'])}
       from employees as Employee
-      join customers as Customer
+      left join customers as Customer
       on Employee.EmployeeId = Customer.SupportRepId
       where Employee.EmployeeId = ${req.params.id}
       `
@@ -86,7 +86,10 @@ class EmployeeController extends BaseController {
               results[arr[1]] = employee[field]
             }
           })
-          results.Customers.push(temp)
+          if (temp.CustomerId) {
+            results.Customers.push(temp)
+
+          }
         });
       }
       res.status(200).send({ success: true, data: results, message: `${this.tableName}.all() ran` })
